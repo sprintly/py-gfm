@@ -62,7 +62,9 @@ class AutolinkPattern(markdown.inlinepatterns.Pattern):
         if not PROTOCOL_RE.match(href):
             href = 'http://%s' % href
         el.set('href', self.unescape(href))
-
+        el.set('class', 'linked-url')
+        el.set('target', '_blank')
+        
         el.text = markdown.util.AtomicString(m.group(2))
         return el
 
